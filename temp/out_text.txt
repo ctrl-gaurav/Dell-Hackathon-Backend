@@ -1,65 +1,79 @@
-Kushagra Srivastava
-Lucknow, U.P., India|LinkedIn| +91 9455229999 | kushagrasrivas1930@gmail.com
+OCR — PDF PARSER
 
-EDUCATION
+Website will be the ideal way to show our product as they don’t want to download any software or
+application in their device to see the solution even though we will be presenting the problem
+ourselves.
 
-Manipal University Jaipur, Rajasthan, India
-Bachelor of Technology, Computer Science Engineering Graduation Date: June, 2023
-@ CGPA - 9.79.
+Website Function:
+User can upload the document one at a time (single page).
 
-City Montessori School Lucknow, U.P., India
-High School Graduation Date: June, 2018
-e Percentage - 90.25% (XII) and 95.0%(X).
+We at the backend should be able to convert that document into plain text and parse that text file to
+get the required 4 default data items plus any extra constraints which the user will enter.
 
-Projects
+We should convert that document into an excel file and let the user download that file
+Version 1:
 
-To Do List Website Lucknow
-Web Developer June, 2021
+Single page scanned documents.
 
-@ Developed a Full Stack To Do List Website using JavaScript, CSS, EJS, HTML, and Mongoose and for the
-database I used MongoDB to store the list 1tems on cloud. I also deployed the website using Heroku.
+4 data items retrieval.
 
-e I got to learn a lot from making the website and it also helped me improve my backend skills which really
-encouraged me to study a lot more and put more effort into this project. I am ready to learn and put my learning
-into a real time project.
+Version 2:
 
-e Link: https://guarded-savannah-57877.herokuapp.com/
+Single page scanned documents with watermarks.
 
-Stationary Shop Database Management System Lucknow
+4 data items retrieval.
 
-Web Developer April, 2021
+Version 3:
 
-@ Developed a Full Stack DBMS website using HTML, CSS and PHP for backend. For this project I used a SQL
-based database which is MySQL as it is better for establishing relationships between different entities.
+Single page scanned documents with watermarks.
 
-e@ This project has multiple databases which are connected to each other. It helps the owner of the shop to keep a
-check on inventory(update and delete the stock of items) and also store customer information whenever a
-customer buys something.
+Additional info which the user wants along with the default 4 data items.
 
-e Link: https://github.com/kushagrasrivas 1930/StationaryShopDBMS. git
+Version 4:
 
-Secrets Authentication Lucknow
-Web Developer July, 2021
-@ Developed a Full Stack Website for implementing different levels of Authentications - Google-OAuth,
+Multiple single page scanned documents with watermark.
 
-Passport-Local-Mongoose. Technologies - EJS, JavaScript, CSS, Bootstrap and MongoDB.
+Extract all the data and put it into an excel sheet and allow users to download that.
+Version 5:
 
-@ [developed this website which stores the secrets of users who have registered and shows the secrets of other
-users anonymously only when the user is logged in. I got to learn a lot about Authentication and how different
-levels of authentications work. Eg: Simple Database matching, hashing of password, using passport package of
-npm and finally how to use google auth to register and login users.
+Extracting Data from handwritten files.
+OCR — PDF PARSER
 
-e Link: https://github.com/kushagrasrivas1930/AuthenticationProject.git
+Website will be the ideal way to show our product as they don’t want to download any software or
+application in their device to see the solution even though we will be presenting the problem
+ourselves.
 
-SKILLS & INTERESTS
-Skills: HTML, CSS, JavaScript, Express.JS, Node.JS, Bootstrap, SQL, MongoDB, Mongoose, MySQL.
+Website Function:
+User can upload the document one at a time (single page).
 
-Languages: Java, C/C++ for Data Structures and Algorithms.
-Developer tools: VS Code, Postman (for Building RESTful APIs), Hyper Terminal, Git, Robo 3T.
-Interests: Data Science and I really like to lead and manage a team and look forward to learning more.
-Awards & Certification: Web Development Bootcamp - Udemy,
+We at the backend should be able to convert that document into plain text and parse that text file to
+get the required 4 default data items plus any extra constraints which the user will enter.
 
-IBM Data Science Specialization - Coursera
+We should convert that document into an excel file and let the user download that file
+Version 1:
 
-Python For Everybody Specialization - Coursera
+Single page scanned documents.
+
+4 data items retrieval.
+
+Version 2:
+
+Single page scanned documents with watermarks.
+
+4 data items retrieval.
+
+Version 3:
+
+Single page scanned documents with watermarks.
+
+Additional info which the user wants along with the default 4 data items.
+
+Version 4:
+
+Multiple single page scanned documents with watermark.
+
+Extract all the data and put it into an excel sheet and allow users to download that.
+Version 5:
+
+Extracting Data from handwritten files.
 

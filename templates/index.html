@@ -36,11 +36,9 @@
                                 </div>
 
                             </form>
-                            <form action="/download" method="post" enctype="multipart/form-data" class="m-auto">
+                            <form action="/download" method="get" enctype="multipart/form-data" class="m-auto">
                                 <div class="d-grid gap-2">
-                                    <input type="submit" value="Download" class="btn btn-primary btn-block text-center mt-2"
-                                        onclick="performOCR()"> 
-
+                                    <input type="submit" value="Download" class="btn btn-primary btn-block text-center mt-2"> 
                                 </div>
 
                             </form>
@@ -60,7 +58,7 @@
             var files = document.getElementById("file").files;
             var formData = new FormData();
             var endpoint = '/upload';
-            forData.append('file', files[0])
+            formData.append('file', files[0])
 
             $.ajax({
                 type: 'POST',

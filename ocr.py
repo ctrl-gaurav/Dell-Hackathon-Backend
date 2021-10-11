@@ -111,5 +111,3 @@ def pdfToTxt(PDF_file, lang='eng'):
 	return text
 	# Close the file after writing all the text.
 	f.close()
-	
-	
