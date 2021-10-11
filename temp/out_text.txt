@@ -1,0 +1,65 @@
+Kushagra Srivastava
+Lucknow, U.P., India|LinkedIn| +91 9455229999 | kushagrasrivas1930@gmail.com
+
+EDUCATION
+
+Manipal University Jaipur, Rajasthan, India
+Bachelor of Technology, Computer Science Engineering Graduation Date: June, 2023
+@ CGPA - 9.79.
+
+City Montessori School Lucknow, U.P., India
+High School Graduation Date: June, 2018
+e Percentage - 90.25% (XII) and 95.0%(X).
+
+Projects
+
+To Do List Website Lucknow
+Web Developer June, 2021
+
+@ Developed a Full Stack To Do List Website using JavaScript, CSS, EJS, HTML, and Mongoose and for the
+database I used MongoDB to store the list 1tems on cloud. I also deployed the website using Heroku.
+
+e I got to learn a lot from making the website and it also helped me improve my backend skills which really
+encouraged me to study a lot more and put more effort into this project. I am ready to learn and put my learning
+into a real time project.
+
+e Link: https://guarded-savannah-57877.herokuapp.com/
+
+Stationary Shop Database Management System Lucknow
+
+Web Developer April, 2021
+
+@ Developed a Full Stack DBMS website using HTML, CSS and PHP for backend. For this project I used a SQL
+based database which is MySQL as it is better for establishing relationships between different entities.
+
+e@ This project has multiple databases which are connected to each other. It helps the owner of the shop to keep a
+check on inventory(update and delete the stock of items) and also store customer information whenever a
+customer buys something.
+
+e Link: https://github.com/kushagrasrivas 1930/StationaryShopDBMS. git
+
+Secrets Authentication Lucknow
+Web Developer July, 2021
+@ Developed a Full Stack Website for implementing different levels of Authentications - Google-OAuth,
+
+Passport-Local-Mongoose. Technologies - EJS, JavaScript, CSS, Bootstrap and MongoDB.
+
+@ [developed this website which stores the secrets of users who have registered and shows the secrets of other
+users anonymously only when the user is logged in. I got to learn a lot about Authentication and how different
+levels of authentications work. Eg: Simple Database matching, hashing of password, using passport package of
+npm and finally how to use google auth to register and login users.
+
+e Link: https://github.com/kushagrasrivas1930/AuthenticationProject.git
+
+SKILLS & INTERESTS
+Skills: HTML, CSS, JavaScript, Express.JS, Node.JS, Bootstrap, SQL, MongoDB, Mongoose, MySQL.
+
+Languages: Java, C/C++ for Data Structures and Algorithms.
+Developer tools: VS Code, Postman (for Building RESTful APIs), Hyper Terminal, Git, Robo 3T.
+Interests: Data Science and I really like to lead and manage a team and look forward to learning more.
+Awards & Certification: Web Development Bootcamp - Udemy,
+
+IBM Data Science Specialization - Coursera
+
+Python For Everybody Specialization - Coursera
+

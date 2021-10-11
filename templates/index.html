@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+    <title>PDF Parser</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-mid-6 m-auto">
+                <h1 class="text-center display-4 my-4">Upload Your PDF</h1>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-mid-6">
+                            <form action="/upload" method="post" enctype="multipart/form-data" class="m-auto">
+                                <div class="custom-file mb-3">
+                                    <input type="file" name="file" id="file" class="form-control">
+                                    <label for="file" class="form-label"></label>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <input type="submit" value="Submit" class="btn btn-primary btn-block text-center"
+                                        onclick="performOCR()">
+
+                                </div>
+
+                            </form>
+                            <form action="/download" method="post" enctype="multipart/form-data" class="m-auto">
+                                <div class="d-grid gap-2">
+                                    <input type="submit" value="Download" class="btn btn-primary btn-block text-center mt-2"
+                                        onclick="performOCR()"> 
+
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function performOCR() {
+            var files = document.getElementById("file").files;
+            var formData = new FormData();
+            var endpoint = '/upload';
+            forData.append('file', files[0])
+
+            $.ajax({
+                type: 'POST',
+                url: endpoint,
+                data: formData,
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function (data) {
+                    swal("Converted Text", data.text);
+                }
+            });
+        }
+    </script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
