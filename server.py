@@ -48,7 +48,7 @@ def _save_file_to_disk(uploaded_file, path=".", save_as="default"):
 
 @app.get('/download')
 def download_file():
-    return FileResponse("temp/out_text.txt")
+    return FileResponse("temp/out_text.xlsx")
 
     
     
