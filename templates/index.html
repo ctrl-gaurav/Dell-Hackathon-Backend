@@ -8,17 +8,29 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/node_modules/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/static/node_modules/bootstrap-social/bootstrap-social.css" />
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <link rel="stylesheet" href="/static/css/demo.css"/>
+    
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <style type="text/css">
+    input[type="file"] {
+        display: none;
+    }
+    </style>
 
 
     <title>PDF Parser</title>
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
+    <div class="container p-3 my-3 border border-danger">
+        <!-- <div class="row">
             <div class="col-mid-6 m-auto">
                 <h1 class="text-center display-4 my-4">Upload Your PDF</h1>
                 <div class="container">
@@ -36,6 +48,17 @@
                                 </div>
 
                             </form>
+
+                            <div class="d-flex justify-content-center row row-content align-items-center">
+                                <div class="d-flex justify-content-center col-12 col-sm-4 align-self-center logo">
+                                    
+                                        <img src="/static/img/pdf1.png" class="img-fluid" height="90px" width="90px" style="margin-left: 10px;" alt="PDF Automation" />
+                                        <img src="/static/img/right-arrow2.png" class="img-fluid" height="70px" width="70px" style="margin-left: 10px; opacity: 0.8;" alt="PDF Automation" />
+                                        <img src="/static/img/analysis icon.png" class="img-fluid" height="90px" width="90px" style="margin-left: 10px;" alt="PDF Automation" />
+                                    
+                                </div>
+                            </div>
+
                             <form action="/download" method="get" enctype="multipart/form-data" class="m-auto">
                                 <div class="d-grid gap-2">
                                     <input type="submit" value="Download" class="btn btn-primary btn-block text-center mt-2"> 
@@ -50,12 +73,132 @@
                 </div>
 
             </div>
+        </div> -->
+
+        <!-- WEBPAGE HEADING-->
+
+        <div class="d-flex col-12 row row-header justify-content-center p-3">
+            <div class="col-auto heading">
+                <h1 style="font-size: 45px;"><b>SIMPLIFYING DATA CAPTURE</b></h1>
+            </div>
         </div>
+
+        <!-- WEBSITE LOGO -->
+
+            <div class="d-flex justify-content-center row row-content align-items-center">
+                <div class="d-flex justify-content-center col-12 col-sm-4 align-self-center logo">
+                    
+                    <img src="/static/img/pdf1.png" class="img-fluid" height="90px" width="90px" style="margin-left: 10px;" alt="PDF Automation" />
+                    <img src="/static/img/right-arrow2.png" class="img-fluid" height="70px" width="70px" style="margin-left: 10px; opacity: 0.8;" alt="PDF Automation" />
+                    <img src="/static/img/analysis icon.png" class="img-fluid" height="90px" width="90px" style="margin-left: 10px;" alt="PDF Automation" />
+                    
+                </div>
+            </div>
+
+        <!-- WEBPAGE DESCRIPTION -->
+        
+            <div class="d-flex row row-content justify-content-center align-items-center">
+                <div class="col-12 col-sm-6">
+                    <div class="description">
+                        Upload your invoices, sales order reciepts or order confirmation documents, sit back and let our OCR engine extract the data for you
+                    </div>
+                </div>
+            </div>
+
+        <!-- CHOOSE FILE BUTTON -->
+
+            <div class="d-flex row row-content align-items-center mt-2">
+                <div class="col-12 col-sm-8 content">
+                        <form action="/upload" method="POST" enctype="multipart/form-data">
+                          <input type="file" name="file-2[]" id="file-2" class="form-control inputfile inputfile-1" data-multiple-caption="{count} files selected" multiple accept="application/pdf" onchange="PreviewImage()" required>
+                          <label for="file-2"><i class="fa fa-upload mr-2" aria-hidden="true"></i>  <span>Choose File</span></label>
+                          <div class="invalid-feedback">
+                              Please choose a file first!
+                            </div>
+                      </form>
+                      <div class="mt-3" style="clear: both; border: none;">
+                           <iframe id="viewer" frameborder="0" scrolling="no" width="200" height="300"></iframe>
+                       </div>
+                    </div> 
+            </div>
+
+        <!-- JS FOR PREVIEW AND CHOOSE FILE RENAMING-->
+
+        <script>
+        (function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);
+        </script>
+
+        <script type="text/javascript">
+            function PreviewImage() {
+                pdffile=document.getElementById("file-2").files[0];
+                pdffile_url=URL.createObjectURL(pdffile);
+                $('#viewer').attr('src',pdffile_url);
+            }
+        </script>
+
+        <!-- UPLOAD BUTTON -->
+
+            <div class="row row-content align-items-center justify-content-center">
+                    <!-- <button class="btn btn-danger button" type="submit" id="btn1" disabled> -->
+                    <!-- <button class="col-12 col-sm-4 btn btn-danger button" type="submit" formaction="/upload" id="btn1" disabled>
+
+                        <i class="loading-icon fa fa-spinner fa-spin mr-2 hide"></i>
+                        <i class="fa fa-paper-plane mr-1 upload-icon" aria-hidden="true"></i>
+                        <span class="btn-txt">UPLOAD</span>
+                        
+                    </button> -->
+                <div class="col-12 col-sm-4">
+                    <input type="submit" value="Submit" class="btn btn-primary btn-danger btn-block text-center"
+                                        onclick="performOCR()">
+                </div>    
+                    
+                
+            </div>
+
+            <div class="row row-content align-items-center justify-content-center">
+
+                <div class="col-12 col-sm-4">
+
+            <form action="/download" method="get" enctype="multipart/form-data" class="m-auto">
+                                <div class="d-grid gap-2">
+                                    <input type="submit" value="Download" class="btn btn-primary btn-danger btn-block text-center mt-2"> 
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
     </div>
 
     <script>
+
+        //to keep upload button disabled till file has been chosen
+        $(document).ready(
+        function(){
+            $('input:file').change(
+                function(){
+                    if ($(this).val()) {
+                        $(".button").attr("disabled", false); 
+                    } 
+                }
+                );
+        });
+
+        //to hide the loading icon till upload has been clicked and to disable the upload button after that
+        $(document).ready(function () {
+            $(".button").on("click", function () {
+                $(".result").text("");
+                $(".loading-icon").removeClass("hide");
+                $(".button").attr("disabled", true);
+                $(".btn-txt").text("Uploading ...");
+                $(".upload-icon").addClass("hide");
+            });
+        });
+
+    </script>
+
+    <script>
         function performOCR() {
-            var files = document.getElementById("file").files;
+            var files = document.getElementById("file-2").files;
             var formData = new FormData();
             var endpoint = '/upload';
             formData.append('file', files[0])
