@@ -4,6 +4,7 @@ import easyocr
 import re
 from pdf2image import convert_from_path
 import xlsxwriter
+from pymongo import MongoClient
 
 def prototype():
     
@@ -29,11 +30,11 @@ def prototype():
 
     #     Phone Number, E-mail Regex Parsing
 
-    print(r_easy_ocr)
+    # print(r_easy_ocr)
     st=""
 
     for i in r_easy_ocr:
-        print(i[1])
+        # print(i[1])
         st = st + i[1] + " "
 
     #print(r_easy_ocr)
@@ -126,6 +127,12 @@ def prototype():
             col += 1
         row += 1
         a += 1
+
+    client = MongoClient("mongodb+srv://admin-kushagra:kushagra@cluster0.imgaq.mongodb.net/TextDB?retryWrites=true&w=majority")
+    db = client["TextDB"]
+    collection = db["Files"]
+    text_file_doc = {"file_name": "Extracted_Data", "Invoice Number": inv, "From": fr, "To": to, "Phone Number": Extracted_data[0], "Email": Extracted_data[1]}
+    collection.insert_one(text_file_doc)
 
     workbook.close()
     return
