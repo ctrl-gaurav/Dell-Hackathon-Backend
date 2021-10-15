@@ -5,6 +5,7 @@ from regex import Regex
 from addressInvoiceExtractor import Address
 from excelWriter import Excel
 import os
+import merge_inv
 
 def final():
 
@@ -37,5 +38,7 @@ def final():
     
         # writing in csv
         exc = Excel()
-        name = 'GeneratedCSVs/Data_Extraction0{}.xlsx'.format(i + 1)
+        name = 'GridCSVs/Data_Extraction0{}.xlsx'.format(i + 1)
         exc.write(Extracted_data, inv, fr, to, name)
+
+    merge_inv.mergeInv()
