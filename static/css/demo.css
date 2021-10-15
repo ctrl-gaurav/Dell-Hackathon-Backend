@@ -71,6 +71,7 @@ body {
 .inputfile-1 + label {
     color: #d3394c;
     border: 2px solid currentColor;
+    border-radius: 8px;
 }
 
 .inputfile-1:focus + label,

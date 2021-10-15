@@ -12,16 +12,16 @@
     <link rel="stylesheet" href="/static/node_modules/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/static/node_modules/bootstrap-social/bootstrap-social.css" />
     <link rel="stylesheet" href="/static/css/styles.css" />
-    <link rel="stylesheet" href="/static/css/demo.css"/>
-    
+    <link rel="stylesheet" href="/static/css/demo.css" />
+
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <style type="text/css">
-    input[type="file"] {
-        display: none;
-    }
+        input[type="file"] {
+            display: none;
+        }
     </style>
 
 
@@ -85,87 +85,136 @@
 
         <!-- WEBSITE LOGO -->
 
-            <div class="d-flex justify-content-center row row-content align-items-center">
-                <div class="d-flex justify-content-center col-12 col-sm-4 align-self-center logo">
-                    
-                    <img src="/static/img/pdf1.png" class="img-fluid" height="90px" width="90px" style="margin-left: 10px;" alt="PDF Automation" />
-                    <img src="/static/img/right-arrow2.png" class="img-fluid" height="70px" width="70px" style="margin-left: 10px; opacity: 0.8;" alt="PDF Automation" />
-                    <img src="/static/img/analysis icon.png" class="img-fluid" height="90px" width="90px" style="margin-left: 10px;" alt="PDF Automation" />
-                    
-                </div>
+        <div class="d-flex justify-content-center row row-content align-items-center">
+            <div class="d-flex justify-content-center col-12 col-sm-4 align-self-center logo">
+
+                <img src="/static/img/pdf1.png" class="img-fluid" height="90px" width="90px" style="margin-left: 10px;"
+                    alt="PDF Automation" />
+                <img src="/static/img/right-arrow2.png" class="img-fluid" height="70px" width="70px"
+                    style="margin-left: 10px; opacity: 0.8;" alt="PDF Automation" />
+                <img src="/static/img/analysis icon.png" class="img-fluid" height="90px" width="90px"
+                    style="margin-left: 10px;" alt="PDF Automation" />
+
             </div>
+        </div>
 
         <!-- WEBPAGE DESCRIPTION -->
-        
-            <div class="d-flex row row-content justify-content-center align-items-center">
-                <div class="col-12 col-sm-6">
-                    <div class="description">
-                        Upload your invoices, sales order reciepts or order confirmation documents, sit back and let our OCR engine extract the data for you
-                    </div>
+
+        <div class="d-flex row row-content justify-content-center align-items-center">
+            <div class="col-12 col-sm-6">
+                <div class="description">
+                    <p style="color: black;">Upload your invoices, sales order reciepts or order confirmation documents,
+                        sit back and let our OCR engine extract the data for you</p>
                 </div>
             </div>
+        </div>
 
         <!-- CHOOSE FILE BUTTON -->
 
-            <div class="d-flex row row-content align-items-center mt-2">
-                <div class="col-12 col-sm-8 content">
-                        <form action="/upload" method="POST" enctype="multipart/form-data">
-                          <input type="file" name="file-2[]" id="file-2" class="form-control inputfile inputfile-1" data-multiple-caption="{count} files selected" multiple accept="application/pdf" onchange="PreviewImage()" required>
-                          <label for="file-2"><i class="fa fa-upload mr-2" aria-hidden="true"></i>  <span>Choose File</span></label>
-                          <div class="invalid-feedback">
-                              Please choose a file first!
-                            </div>
-                      </form>
-                      <div class="mt-3" style="clear: both; border: none;">
-                           <iframe id="viewer" frameborder="0" scrolling="no" width="200" height="300"></iframe>
-                       </div>
-                    </div> 
+        <div class="d-flex row row-content align-items-center mt-2">
+            <div class="col-12 col-sm-8 content">
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="file-2[]" id="file-2" class="form-control inputfile inputfile-1"
+                        data-multiple-caption="{count} files selected" multiple accept="application/pdf"
+                        onchange="PreviewImage()" required>
+                        <label for="file-2"><i class="fa fa-file-pdf mr-2 fa-input" aria-hidden="true">&#xf1c1</i>  <span>Choose File</span></label>
+                    <div class="invalid-feedback">
+                        Please choose a file first!
+                    </div>
+                </form>
+                <!-- <div class="mt-3" style="clear: both; border: none;">
+                    <iframe id="viewer" frameborder="0" scrolling="no" width="200" height="300"></iframe>
+                </div> -->
             </div>
+        </div>
+
+        <!-- PDF PREVIEW BOX -->
+
+        <div
+            class="d-flex row row-content align-items-center justify-content-center animated animatedFadeInUp fadeInUp">
+            <div class=" col-sm-6 mb-3" id="prev">
+                <div class="" id="previewBox" style="width: 30em; overflow-x: auto; white-space: nowrap;">
+                </div>
+            </div>
+        </div>
 
         <!-- JS FOR PREVIEW AND CHOOSE FILE RENAMING-->
 
-        <script>
-        (function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);
-        </script>
-
         <script type="text/javascript">
             function PreviewImage() {
-                pdffile=document.getElementById("file-2").files[0];
-                pdffile_url=URL.createObjectURL(pdffile);
-                $('#viewer').attr('src',pdffile_url);
+                var n = document.getElementById("file-2").files.length;
+                if (n == 1) document.getElementById("prev").className = document.getElementById("prev").className.replace('col-sm-6', 'col-sm-3');
+                if (n == 2) document.getElementById("prev").className = document.getElementById("prev").className.replace('col-sm-6', 'col-sm-5');
+                while (n >= 0) {
+                    pdffile = document.getElementById("file-2").files[n - 1];
+                    var embed = document.createElement('embed');
+                    embed.setAttribute('width', '200');
+                    embed.setAttribute('height', '300');
+                    embed.setAttribute('style', 'border: none; margin: 10px 15px 0px 0px;');
+                    pdffile_url = URL.createObjectURL(pdffile);
+                    embed.src = pdffile_url;
+                    document.getElementById('previewBox').appendChild(embed);
+                    n--;
+                }
+
             }
         </script>
 
         <!-- UPLOAD BUTTON -->
 
-            <div class="row row-content align-items-center justify-content-center">
-                    <!-- <button class="btn btn-danger button" type="submit" id="btn1" disabled> -->
-                    <!-- <button class="col-12 col-sm-4 btn btn-danger button" type="submit" formaction="/upload" id="btn1" disabled>
+        <div class="row row-content align-items-center justify-content-center animated animatedFadeInUp fadeInUp">
+            <!-- <button class="btn btn-danger button" type="submit" id="btn1" disabled> -->
+            <!-- <button class="col-12 col-sm-4 btn btn-danger button" type="submit" formaction="/upload" id="btn1" disabled>
 
-                        <i class="loading-icon fa fa-spinner fa-spin mr-2 hide"></i>
-                        <i class="fa fa-paper-plane mr-1 upload-icon" aria-hidden="true"></i>
-                        <span class="btn-txt">UPLOAD</span>
-                        
-                    </button> -->
-                <div class="col-12 col-sm-4">
-                    <input type="submit" value="Submit" class="btn btn-primary btn-danger btn-block text-center"
-                                        onclick="performOCR()">
-                </div>    
-                    
+                <i class="loading-icon fa fa-spinner fa-spin mr-2 hide"></i>
+                <i class="fa fa-paper-plane mr-1 upload-icon" aria-hidden="true"></i>
+                <span class="btn-txt">UPLOAD</span>
                 
+            </button> -->
+            <div class="col-12 col-sm-4">
+                <!-- <div class="inputwrapper"> -->
+                <!-- <i class="fa fa-paper-plane mr-1 upload-icon" aria-hidden="true"></i> -->
+                <!-- <i class="fa fa-file-pdf mr-2 fa-input" aria-hidden="true">&#xf1c1</i>  <span></span> -->
+   
+                <input type="submit" value="&#xf093;   UPLOAD" id="submit" class="btn btn-block text-center fa-input"
+                    onclick="performOCR()" disabled>
+                <!-- </div> -->
+
             </div>
 
-            <div class="row row-content align-items-center justify-content-center">
 
-                <div class="col-12 col-sm-4">
+        </div>
 
-            <form action="/download" method="get" enctype="multipart/form-data" class="m-auto">
-                                <div class="d-grid gap-2">
-                                    <input type="submit" value="Download" class="btn btn-primary btn-danger btn-block text-center mt-2"> 
-                                </div>
-                            </form>
-                        </div>
+        <div class="row row-content align-items-center justify-content-center progressblock">
+
+            <!-- <div > -->
+
+            <div class="col-12 col-sm-4 progress hide" style="height: 2px;" id="progress">
+                <div id="progressBar" class="progress-bar bg-danger" role="progressbar" aria-valuenow="0"
+                    aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+
+                </div>
+
+            </div>
+            <div class="progressmeter hide" style="color: black; font-size: 15px; margin-top: 5px; text-align: center;">
+                0%</div>
+
+            <!-- </div> -->
+        </div>
+
+        <div
+            class="row row-content align-items-center justify-content-center download hide animated animatedFadeInUp fadeInUp">
+
+            <div class="col-12 col-sm-4">
+
+                <form action="/download" method="get" enctype="multipart/form-data" class="m-auto">
+                    <div class="d-grid gap-2">
+                        <input type="submit" value="&#xf019;   DOWNLOAD" id="download"
+                            class="btn btn-primary btn-danger btn-block text-center mt-2 mb-3 fa-input" disabled>
                     </div>
+                </form>
+            </div>
+        </div>
 
     </div>
 
@@ -173,24 +222,22 @@
 
         //to keep upload button disabled till file has been chosen
         $(document).ready(
-        function(){
-            $('input:file').change(
-                function(){
-                    if ($(this).val()) {
-                        $(".button").attr("disabled", false); 
-                    } 
-                }
+            function () {
+                $('input:file').change(
+                    function () {
+                        if ($(this).val()) {
+                            $("input:submit").attr("disabled", false);
+                        }
+                    }
                 );
-        });
+            });
 
         //to hide the loading icon till upload has been clicked and to disable the upload button after that
         $(document).ready(function () {
-            $(".button").on("click", function () {
-                $(".result").text("");
-                $(".loading-icon").removeClass("hide");
-                $(".button").attr("disabled", true);
-                $(".btn-txt").text("Uploading ...");
-                $(".upload-icon").addClass("hide");
+            $("#submit").on("click", function () {
+                $("#progress").removeClass("hide");
+                $(".progressmeter").removeClass("hide");
+                $("input:submit").attr("disabled", true);
             });
         });
 
@@ -210,9 +257,39 @@
                 }
                 endpoint = '/bulk_extract_text'
             }
-            
+
 
             $.ajax({
+
+                xhr: function () {
+                    var xhr = new window.XMLHttpRequest();
+
+                    xhr.upload.addEventListener('progress', function (e) {
+
+                        if (e.lengthComputable) {
+
+                            console.log('Bytes Loaded: ' + e.loaded);
+                            console.log('Total Size: ' + e.total);
+                            console.log('Percentage Uploaded: ' + (e.loaded / e.total))
+
+                            var percent = Math.round((e.loaded / e.total) * 100);
+
+                            $('#progressBar').attr('aria-valuenow', percent).css('width', percent + '%');
+                            $('.progressmeter').text(percent + '%');
+                            if (percent == 100) {
+                                $('.progressblock').replaceWith($('.download'));
+                                $(".download").removeClass("hide");
+                                $("#download").attr('disabled', false);
+                            }
+
+                        }
+
+                    });
+
+                    return xhr;
+                },
+
+
                 type: 'POST',
                 url: endpoint,
                 data: formData,
@@ -232,6 +309,8 @@
         }
     </script>
 
+    <script type="text/javascript"></script>
+    <script src="/static/js/custom-file-input.js"></script>
 
 
 

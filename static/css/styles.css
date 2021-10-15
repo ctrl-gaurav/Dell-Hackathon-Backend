@@ -1,13 +1,19 @@
 body {
-    background-image: url(../img/bg3.png);
-    background-size: cover;
+    
+    background-image: url(../img/bluebg.jpg);
+    -ms-overflow-style: none;  
+    scrollbar-width: none; 
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 .container {
     background-color: #e5e5e5;
     min-height: 800px;
     border-color: #ff0000;
-    animation: fadeIn 1.5s;
+    /*animation: fadeIn 1.5s;*/
     box-shadow: 0 15px 25px rgba(0, 0, 0, 1);
     border-radius: 16px;
 }
@@ -21,12 +27,48 @@ body {
     }
 }
 
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0,20px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+.animated {
+    animation-duration: 1.3s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1.3s;
+    -webkit-animation-fill-mode: both
+}
+
+.fadeInUp {
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+}
+
 button {
     margin: 30px;
 }
 
 .heading {
     margin-top: 50px;
+    color: black;
 }
 
 
@@ -37,39 +79,73 @@ button {
 
 .logo {
     max-width: 100%;
-    border: 2px #ff9999;
-    border-style: double;
+    /*border: 2px #ff9999;*/
+    /*border-style: double;*/
     padding: 30px;
-    border-radius: 8px;
+    /*border-radius: 8px;*/
 }
 
 .description {
     font-size: 18px;
     text-align: center;
     margin-top: 10px;
-    /*font: montserrat;*/
     font-style: italic;
     font-family: sans-serif;
 }
 
 
-.button {
-    border: 1px solid #ff0000;
-    border-radius: 8px;
-    background-color: #ff3333;
-    padding: 16px 60px 16px 20px;
-    color: white;
-    font-weight: bold;
-    font-size: 25px;
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-.button:hover {
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff6666; 
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff3333; 
+}
+
+.fa-input {
+  font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-style: normal;
+  
+}
+
+
+input[type=submit] {
+    /*border: 1px solid #ff0000;*/
+    border-radius: 8px;
+    background-color: #ff3333;
+    padding: 10px 0px;
+    color: #e8e8e8;
+    /*font-weight: bold;*/
+    font-size: 25px;
+}
+input[type=submit]::before {
+    font-family: "Font Awesome 5 Brands"; content: "\f099";
+  }
+
+
+input[type=submit]:hover {
     opacity: 1;
     background-color: #ff0000;
     transition: 0.5s;
+    color: #ffffff;
 }
 
 .hide {
     visibility: hidden;
+}
+
+.download {
+    margin-bottom: 40px;
 }
 
