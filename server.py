@@ -2,10 +2,12 @@ from fastapi import FastAPI, Request, UploadFile, status
 from fastapi.params import File
 from fastapi.datastructures import UploadFile
 from fastapi.templating import Jinja2Templates
-from main import prototype 
+from starlette.background import BackgroundTasks
+import main
 from starlette.requests import Request
 from fastapi.responses import FileResponse
 import shutil
+import main
 import os
 # import ocr
 # import requests
@@ -39,13 +41,28 @@ def home(request: Request):
     return templates.TemplateResponse('index.html', {'request': request})
 
 @app.post('/upload')
-def perform_ocr(file: UploadFile = File(...)):
-    temp_file = _save_file_to_disk(file, path="temp", save_as="temp_file")
-    prototype()
+async def perform_ocr(file: UploadFile = File(...)):
+    filename = file.filename[0:len(file.filename)-4]
+    temp_file = _save_file_to_disk(file, path="PDFs", save_as= filename)
+    main.final()
     return temp_file
     # text = ocr.pdfToTxt(temp_file)
     # return {"filename": file.filename, "text": text}
     
+
+@app.post('/bulk_extract_text')
+async def bulk_perform_ocr(request: Request, bg_tasks: BackgroundTasks):
+    files = await request.form()
+
+    folder_name = "PDFs"
+    
+    for file in files.values():
+        filename = file.filename[0:len(file.filename)-4]
+        temp_file = _save_file_to_disk(file, path = folder_name, save_as = filename)
+    main.final()
+    return
+    
+
 
 def _save_file_to_disk(uploaded_file, path=".", save_as="default"):
     extension = os.path.splitext(uploaded_file.filename)[-1]
