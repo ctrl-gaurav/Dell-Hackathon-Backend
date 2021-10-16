@@ -206,3 +206,6 @@ class Grid():
         df = df.replace(r'\n', '', regex=True)
         df = df.replace(r'_x000C_', '', regex=True)
         df.to_excel(name)
+
+        count = name[15]
+        

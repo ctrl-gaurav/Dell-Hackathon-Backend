@@ -24,7 +24,7 @@ from fastapi.staticfiles import StaticFiles
 # db = client["TextDB"]
 # collection = db["Files"]
 
-path = "C:/Users/OneDrive/Kushagra Srivastava/Desktop/pymongo-1"
+
 
 app = FastAPI()
 
