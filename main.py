@@ -6,7 +6,12 @@ from addressInvoiceExtractor import Address
 from excelWriter import Excel
 import os
 import merge_inv
+import pymongo
+from cropGrid import cropGrid
+from counter import Counter
+c=0
 
+count = Counter()
 def final():
 
     # converting PDFs to image
@@ -27,8 +32,9 @@ def final():
         reg = Regex()
         Extracted_data = reg.emailPhone(r_easy_ocr)
     
-        grid = Grid()
-        grid.detect(f, i+1)
+        # cropping Grid Images
+        crop = cropGrid()
+        crop.crop(f, i + 1)
     
         # Address, Invoice Recognition
         add = Address()
@@ -41,4 +47,17 @@ def final():
         name = 'GridCSVs/Data_Extraction0{}.xlsx'.format(i + 1)
         exc.write(Extracted_data, inv, fr, to, name)
 
+    # Setting Cropped Grid Images
+    gridPath = 'CroppedGrids'
+    grids = []
+    for filename in os.listdir(gridPath):
+        grids.append(os.path.join(gridPath, filename))
+
+    # Generating Grid Images
+    for i, f in enumerate(grids):
+        grid = Grid()
+        grid.detect(f, i + 1)
+
     merge_inv.mergeInv()
+    cr = count.count(c)
+    print(cr)
