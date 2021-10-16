@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from pandas.core.indexes.base import Index
 
 try:
     from PIL import image
@@ -193,8 +194,15 @@ class Grid():
         # Creating a dataframe of the generated OCR list
         arr = np.array(outer)
         dataframe = pd.DataFrame(arr.reshape(len(row), countcol))
+        # dataframe = dataframe.applymap(lambda x: x.encode('unicode_escape').
+        #          decode('utf-8') if isinstance(x, str) else x)
+        # dataframe = dataframe.replace('\n',' ', regex=True)
         # print(dataframe)
         data = dataframe.style.set_properties(align="left")
         # Converting it in a excel-file
         name = 'GridCSVs/output{}.xlsx'.format(no)
-        data.to_excel(name)
+        data.to_excel(name, index=False)
+        df = pd.read_excel(name)
+        df = df.replace(r'\n', '', regex=True)
+        df = df.replace(r'_x000C_', '', regex=True)
+        df.to_excel(name)
