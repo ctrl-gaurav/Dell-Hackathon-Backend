@@ -22,7 +22,7 @@ class Address():
         if st == "Invoice Number":
             h = (bb[2][1] - bb[1][1])
         else:
-            h = (bb[2][1] - bb[1][1]) * 6
+            h = (bb[2][1] - bb[1][1]) * 7
 
         crop_img = img[y:y + h, x:x + w]
         print("Running OCR on Cropped Image ....")

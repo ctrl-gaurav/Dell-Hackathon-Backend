@@ -38,9 +38,18 @@ def final():
     
         # Address, Invoice Recognition
         add = Address()
-        inv = add.addressInvoice(r_easy_ocr, 'Invoice Number', f)
-        fr = add.addressInvoice(r_easy_ocr, 'From:', f)
-        to = add.addressInvoice(r_easy_ocr, 'To:', f)
+        try:
+            inv = add.addressInvoice(r_easy_ocr, 'Invoice Number', f)
+        except:
+            inv = add.addressInvoice(r_easy_ocr, 'Invoice No_', f)
+        try:
+            fr = add.addressInvoice(r_easy_ocr, 'From:', f)
+        except:
+            fr = add.addressInvoice(r_easy_ocr, 'FROM', f)
+        try:
+            to = add.addressInvoice(r_easy_ocr, 'To:', f)
+        except:
+            to = add.addressInvoice(r_easy_ocr, 'To', f)
     
         # writing in csv
         exc = Excel()

@@ -7,9 +7,15 @@ class OCR():
         pass
 
     def engine(self, path):
-        reader = easyocr.Reader(['en'], gpu=False)
+        reader = easyocr.Reader(['en'], gpu=True)
         image_file_name = path
-        image = cv2.imread(image_file_name)
+        img = cv2.imread(image_file_name)
+
+
+        width, height, rgb = img.shape
+        a = height * 0.8
+        a = int(a)
+        image = img[0:a]
 
         # sharp the edges or image.
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
