@@ -4,10 +4,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from pandas.core.indexes.base import Index
 
-try:
-    from PIL import image
-except ImportError:
-    import image 
+# try:
+#     from PIL import image
+# except ImportError:
+#     import image 
 import pytesseract
 
 class Grid():

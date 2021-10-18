@@ -3,10 +3,10 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
-try:
-    from PIL import image
-except ImportError:
-    import image 
+# try:
+#     from PIL import image
+# except ImportError:
+#     import image 
 import pytesseract
 
 def mergeInv():
